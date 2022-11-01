@@ -55,7 +55,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
     event_name AS dimension, 
     COUNT(*) AS value
   FROM `PROJET.DATASET.events_*`
-  WHERE _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  WHERE
+    _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
     AND event_name IN ("screen_view", "search", "login", "purchase")
   GROUP BY ts, dimension
 
@@ -67,7 +68,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
     CONCAT(event_name, " - ", platform) AS dimension,
     COUNT(*) AS value
   FROM `PROJET.DATASET.events_*`
-  WHERE _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  WHERE 
+    _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
     AND event_name IN ("screen_view", "search", "login", "purchase")
   GROUP BY ts, dimension
 
@@ -79,7 +81,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
     CONCAT(event_name, " - ", device.category) AS dimension,
     COUNT(*) AS value
   FROM `PROJET.DATASET.events_*`
-  WHERE _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  WHERE
+    _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
     AND event_name IN ("screen_view", "search", "login", "purchase")
   GROUP BY ts, dimension
 
@@ -91,7 +94,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
     "unique_user" AS dimension,
     COUNT(DISTINCT user_pseudo_id) AS value
   FROM `PROJET.DATASET.events_*`
-  WHERE _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  WHERE
+    _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
   GROUP BY ts, dimension
 )
 ```

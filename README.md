@@ -24,7 +24,7 @@ Voici les grandes lignes :
 
 # Préparer vos données brutes pour effectuer la détection d'anomalie
 
-Comme tout projet de ML, l'étape la plus importante (et parfois le plus fastidieuse) est de préparer les données.  Cette étape est pourtant la plus importante.  Voici comment préparer vos données afin d'être prêt à être consommé par BigQueyML pour effectuer des prédictions.
+Comme tout projet de ML, l'étape la plus importante (et parfois le plus fastidieuse) est de préparer les données.  Cette étape est pourtant la plus importante.  Voici comment préparer vos données afin d'être prêt à être consommé par BigQuey ML pour effectuer des prédictions.
 
 La table devra avoir le format suivant :
 

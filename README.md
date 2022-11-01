@@ -129,7 +129,7 @@ Voilà, notre matière première est prête pour être utiliser par BigQuery ML.
 
 # Entraîner un modèle de prédiction ARIMA+ afin de détecter des anomalies
 
-Nous allons utiliser les données des derniers jours afin d'effectuer une prédiction pour nos valeurs.  C'est pourquoi nous n'allons pas utiliser 7 derniers jours pour entraîner notre modèle.  Ensuite, en comparant les réel valeurs 7 derniers jours avec la prédiction de ces même jours, nous serons en mesure d'identifier des écarts entre la réalité et la prédiction.  Ces écarts devrons ensuite être analyser afin de déterminer si ce sont de faux-positif ou de vrai anomalies que nous devons corriger.
+Nous allons utiliser les données des derniers jours afin d'effectuer une prédiction pour nos valeurs.  C'est pourquoi nous n'allons pas utiliser les 7 derniers jours pour entraîner notre modèle.  Ensuite, en comparant les valeurs réelles des 7 derniers jours avec la prédiction de ces même jours, nous serons en mesure d'identifier des écarts entre la réalité et la prédiction.  Ces écarts devrons ensuite être analyser afin de déterminer si ce sont de faux-positif ou de vraies anomalies que nous devons corriger.
 
 BigQuery ML est très puissants et permet de créer des modèles complexes avec une facilité déconcertante.  Nous avons simplement besoin d'une requête SQL : 
 

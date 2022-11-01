@@ -117,7 +117,7 @@ C'est ici que nous ajoutons ce que nous souhaitons surveiller.  Il est possible 
 3. **event_name - _DEVICE CATEGORY_** - Ici je combine le event_name avec le `device.category` (DESKTOP, MOBILE, TABLET) afin d'être en mesure de détecter un problème spécifique sur un type d'appareil.  Par exemple, nous avons peut-être uniquement un problème sur le mobile.  J'effectue la combinaison de 2 champs BigQuery avec un `CONCAT(event_name, " - ", device.category)`.
 4. **unique_user** - Ici, je fais les choses différemment.  Je veux regarder si le nombre de "visiteur" (`COUNT(DISTINCT user_pseudo_id)`) à diminuer (ou exploser).  Je ne regarde donc pas pour des event_name spécifiques, c'est pourquoi j'ai retiré la condition dans le `WHERE`.
 
-## À quoi sert le `_TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))`?
+## À quoi sert `_TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))`?
 
 Afin d'effectuer une prédiction précise, nous avons besoin d'un certain volume d'historique.  Si l'historique est trop grand, ça va nuire au modèle (les données AVANT la pandémie n'ont probablement plus rien à voir avec celles d'aujourd'hui.)  Mais prendre une période trop petite ne nous permettera pas de détecter des tendances lourdes ou certaines saisonalités.  C'est pourquoi je prends ici les 120 derniers jours.
 

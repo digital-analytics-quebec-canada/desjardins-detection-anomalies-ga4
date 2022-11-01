@@ -1,4 +1,4 @@
-# Desjardins - Détection d'anomalies Google Analytics 4 avec BigQuery ML (ARIMA+) de façon automatique
+# Desjardins - Détection d'anomalies dans Google Analytics 4 avec BigQuery ML de façon automatique
 
 ![Logo Desjardins](./img/d15-desjardins-logo-couleur.png "Logo Desjardins")
 

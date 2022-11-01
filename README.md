@@ -50,22 +50,45 @@ Nous allons d'abord créer une table avec les valeurs (dimensions/values) que no
 ```sql
 CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
   # Requête pour surveiller le nombre event par jour pour certain event GA4.
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts, event_name AS dimension, COUNT(*) AS value FROM `PROJET.DATASET.events_*` WHERE event_name IN ("screen_view", "search", "login", "purchase") AND _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)) GROUP BY ts, dimension
+  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts, 
+  event_name AS dimension, 
+  COUNT(*) AS value
+  FROM `PROJET.DATASET.events_*`
+  WHERE event_name IN ("screen_view", "search", "login", "purchase")
+  AND _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  GROUP BY ts, dimension
 
   UNION ALL
 
   # Requête pour surveiller le nombre event par jour et par plateforme pour certain event GA4.
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts, CONCAT(event_name, " - ", platform) AS dimension, COUNT(*) AS value FROM `PROJET.DATASET.events_*` WHERE event_name IN ("screen_view", "search", "login", "purchase") AND _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)) GROUP BY ts, dimension
+  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
+  CONCAT(event_name, " - ", platform) AS dimension,
+  COUNT(*) AS value
+  FROM `PROJET.DATASET.events_*`
+  WHERE event_name IN ("screen_view", "search", "login", "purchase")
+  AND _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  GROUP BY ts, dimension
 
   UNION ALL
 
   # Requête pour surveiller le nombre event par jour et par type appareil pour certain event GA4.
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts, CONCAT(event_name, " - ", device.category) AS dimension, COUNT(*) AS value FROM `PROJET.DATASET.events_*` WHERE event_name IN ("screen_view", "search", "login", "purchase") AND _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)) GROUP BY ts, dimension
+  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
+  CONCAT(event_name, " - ", device.category) AS dimension,
+  COUNT(*) AS value
+  FROM `PROJET.DATASET.events_*`
+  WHERE event_name IN ("screen_view", "search", "login", "purchase")
+  AND _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  GROUP BY ts, dimension
 
   UNION ALL
 
   # Requête pour surveiller le nombre unique de visiteur (user_pseudo_id).
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts, "unique_user" AS dimension, COUNT(DISTINCT user_pseudo_id) AS value FROM `PROJET.DATASET.events_*` WHERE _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)) GROUP BY ts, dimension
+  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
+  "unique_user" AS dimension,
+  COUNT(DISTINCT user_pseudo_id) AS value
+  FROM `PROJET.DATASET.events_*`
+  WHERE _TABLE_SUFFIX >= FORMAT_DATE("%Y%m%d",DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY))
+  GROUP BY ts, dimension
 )
 ```
 

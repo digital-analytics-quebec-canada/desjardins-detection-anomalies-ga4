@@ -88,7 +88,7 @@ C'est ici que nous ajoutons ce que nous souhaitons surveiller.  Il est possible 
 
 Afin d'effectuer une prédiction précise, nous avons besoin d'un certain volume d'historique.  Si l'historique est trop grand, ça va nuire au modèle (les données AVANT la pandémie n'ont probablement plus rien à voir avec celles d'aujour'hui.)  Mais prendre une période trop petite ne nous permetteras pas de détecter des tendances lourdes ou certaines saisonalité.  C'est pourquoi je prends ici les 120 derniers jours.
 
-Comme au lieu de préciser la table exacte dans la table (event_20220125), nous utilions event_* et nous limitons ensuite via une condition WHERE les jours que nous voulons utiliser en utilisant _TABLE_SUFFIX.
+Google sépare les données exportés de GA4 dans une table par jour.  Donc, si nous voulons effectuer une requête sur plus d'une journée, nous devons utiliser un *widlcard* dans le nom de la table.  Comme au lieu de préciser la table exacte dans la requête (event_20220125), nous utilions event_* et nous limitons ensuite via une condition WHERE les jours que nous voulons utiliser en utilisant _TABLE_SUFFIX.
 
 Voilà, notre matière première est prête pour être utiliser par BigQueryML.  Le pire est fait, je vous le jure.
 

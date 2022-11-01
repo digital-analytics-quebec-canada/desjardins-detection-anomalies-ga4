@@ -6,7 +6,7 @@
 
 ---
 
-Il est possible d'utiliser [BigQueryML et un modèle prédictif ARIMA+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-time-series) afin d'effectuer des prédictions sur des séries temporelles.
+Il est possible d'utiliser [BigQuery ML et un modèle prédictif ARIMA+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-time-series) afin d'effectuer des prédictions sur des séries temporelles.
 
 Ensuite, en comparant cette prédiction avec les valeurs réels, il est possible d'identifier des anomalies potentielles.
 
@@ -88,17 +88,17 @@ C'est ici que nous ajoutons ce que nous souhaitons surveiller.  Il est possible 
 
 Afin d'effectuer une prédiction précise, nous avons besoin d'un certain volume d'historique.  Si l'historique est trop grand, ça va nuire au modèle (les données AVANT la pandémie n'ont probablement plus rien à voir avec celles d'aujour'hui.)  Mais prendre une période trop petite ne nous permetteras pas de détecter des tendances lourdes ou certaines saisonalité.  C'est pourquoi je prends ici les 120 derniers jours.
 
-Google sépare les données exportés de GA4 dans une table par jour.  Donc, si nous voulons effectuer une requête sur plus d'une journée, nous devons utiliser un *widlcard* dans le nom de la table.  Comme au lieu de préciser la table exacte dans la requête (event_20220125), nous utilions event_* et nous limitons ensuite via une condition WHERE les jours que nous voulons utiliser en utilisant _TABLE_SUFFIX.
+Google sépare les données exportés de GA4 dans une table par jour.  Donc, si nous voulons effectuer une requête sur plus d'une journée, nous devons utiliser un *widlcard* dans le nom de la table.  C'est pourquoi au lieu de préciser la table exacte dans la requête (event_20220125), nous utilions event_\*. Nous limitons ensuite via une condition `WHERE` les jours que nous voulons utiliser en utilisant `_TABLE_SUFFIX`.
 
-Voilà, notre matière première est prête pour être utiliser par BigQueryML.  Le pire est fait, je vous le jure.
+Voilà, notre matière première est prête pour être utiliser par BigQuery ML.  Le pire est fait, je vous le jure.
 
 ---
 
 # Entraîner un modèle de prédiction ARIMA+ afin de détecter des anomalies
 
-Nous allons utiliser les données des derniers jours afin d'effectuer une prédiction pour nos valeurs.  Nous n'allons pas utiliser les valeurs des 7 derniers jours pour ce faire.  Ensuite, en comparant les 7 derniers jours avec la prédiction de ces même 7 jours, nous serons en mesure d'identifier des écarts entre la réalité et la prédiction.  Ces écarts devrons ensuite être analyser afin de déterminer si ce sont de faux-positif ou de vrai anomalies que nous devons corriger.
+Nous allons utiliser les données des derniers jours afin d'effectuer une prédiction pour nos valeurs.  C'est pourquoi nous n'allons pas utiliser 7 derniers jours pour entraîner notre modèle.  Ensuite, en comparant les réel valeurs 7 derniers jours avec la prédiction de ces même jours, nous serons en mesure d'identifier des écarts entre la réalité et la prédiction.  Ces écarts devrons ensuite être analyser afin de déterminer si ce sont de faux-positif ou de vrai anomalies que nous devons corriger.
 
-BigQueryML est très puissants et permet de créer des modèles complexes avec une facilité déconcertante.  Nous avons simplement besoin d'une requête SQL : 
+BigQuery ML est très puissants et permet de créer des modèles complexes avec une facilité déconcertante.  Nous avons simplement besoin d'une requête SQL : 
 
 ```sql
 CREATE OR REPLACE MODEL `PROJET.DATASET.detection_anomalies_model`
@@ -118,7 +118,7 @@ WHERE
   ts < TIMESTAMP_SUB(TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 DAY), INTERVAL 7 DAY) # Important, exclure les 7 derniers jours pour entrainer nos modèles.
 ```
 
-C'est tout.  Oui, oui je vous jure.  Le modèle est entrainer.  En fait LES modèles devrais-je dire, car BigQueryML a entraîner autant de modèle que nous avions de dimensions distingue dans la colonne dimension.
+C'est tout.  Oui, oui je vous jure.  Le modèle est entrainer.  En fait LES modèles devrais-je dire, car BigQuery ML a entraîner autant de modèle que nous avions de dimensions distingue dans la colonne dimension.
 
 # Comprendre cette requête BigQuery ML
 

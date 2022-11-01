@@ -1,4 +1,4 @@
-# Desjardins - Détection d'anomalies Google Analytics 4 avec BigQueryML (ARIMA+) de façon automatique
+# Desjardins - Détection d'anomalies Google Analytics 4 avec BigQuery ML (ARIMA+) de façon automatique
 
 ![Logo Desjardins](./img/d15-desjardins-logo-couleur.png "Logo Desjardins")
 
@@ -96,7 +96,7 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
 )
 ```
 
-Ces 4 requêtes peuvent faire peur si vous n'êtes pas habitué à BigQuery, mais nous allons prendre le temps de les décortiquer.  [Pour en savoir plus sur le schémas de données GA4 dans BigQuery.](https://support.google.com/analytics/answer/7029846?hl=en)
+Ces 4 requêtes peuvent faire peur si vous n'êtes pas habitué à BigQuery, mais nous allons prendre le temps de les décortiquer.  ([Cliquer ici pour en savoir plus sur le schémas de données GA4 dans BigQuery.](https://support.google.com/analytics/answer/7029846?hl=en))
 
 ![Exemple de préparation](./img/preparation-des-donnes.png "Exemple de préparation")
 

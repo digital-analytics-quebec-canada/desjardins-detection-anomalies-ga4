@@ -183,7 +183,7 @@ Voici de quoi ressemble une prédiction :
 
 ![Exemple de prédiction](./img/forecast.png "Exemple de prédictions")
 
-Il ne reste ensuite qu'à comparer ces prédictions avec la réalité.  Un vérifiant si la valeur réelle est plus grande que l'intervale le plus élevé prédit (ou au contraire, si la valeur est plus petite que l'intervale le plus petit prédit), il est possible d'identifier des anoamliles.  Il est même possible de le faire en effectuant une jointure entre la table de prédiction et la table des valeurs réelles :
+Il ne reste ensuite qu'à comparer ces prédictions avec la réalité.  Un vérifiant si la valeur réelle est plus grande que l'intervale le plus élevé prédit (ou au contraire, si la valeur est plus petite que l'intervale le plus petit prédit), il est possible d'identifier des anomalies.  Il est même possible de le faire dans une seul requête en effectuant une jointure entre la table de prédiction et la table des valeurs réelles :
 
 ```sql
  WITH 

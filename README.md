@@ -14,7 +14,9 @@ Ensuite, en comparant cette prédiction avec les valeurs réels, il est possible
 
 ![Exemple d'anomalie](./img/exemple_anomalie.png "Exemple d'anomalie")
 
-Je vais donc démontrer une méthode simple d'effectuer une détection d'anomalies sur les données de Google Analytics 4 (GA4) exportés vers BigQuery un utilisant simplement quelques requêtes *SQL*.  Oui oui, juste avec du SQL, même pas besoin d'un framework de *Machine Learning (ML)* comme PyTorch, Scikit-Learn, Tensorflow.
+Je vais donc démontrer une méthode simple d'effectuer une détection d'anomalies sur les données de Google Analytics 4 (GA4) exportés vers BigQuery un utilisant simplement quelques requêtes *SQL*.  Oui oui, juste avec du SQL.
+
+Voici les grandes lignes : 
 
 ![Architecture](./img/detection-anomalies.drawio.png "Architecture")
 

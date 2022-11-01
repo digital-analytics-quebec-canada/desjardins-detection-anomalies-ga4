@@ -220,11 +220,13 @@ Finalement, il est même possible d'utiliser Lokker Studio afin d'inspecter les 
 
 Évidemment, ici les données sont bidons, mais ça vous montre quand même l'idée.
 
+Voilà,, avec 3 requêtes SQL, nous avons : préparer nos données, entraîner un modèle et effectuer des prédictions avec modèle pour identifier les anomalies possibles.
+
 ---
 
-# Et l'automatisation dans tous ça?  Le titre dit bien "de façon automatique"
+# Et l'automatisation dans tous ça?  Le titre dit bien "de façon automatique".
 
-Il est possible [d'automatiser directement l'exécution d'une requête depuis la console web BigQuery](https://cloud.google.com/bigquery/docs/scheduling-queries).  Il est donc possible d'automatiser nos 3 requêtes, mais attention de le faire dans le bon ordre.  Par exemple, chaque dimanche : 
+Il est possible [d'automatiser l'exécution d'une requête depuis la console web BigQuery](https://cloud.google.com/bigquery/docs/scheduling-queries).  Il est donc possible d'automatiser nos 3 requêtes, mais attention de le faire dans le bon ordre.  Par exemple, chaque dimanche : 
 
 1. Préparation des données à 18h00.
 2. Entraînement des modèles à 18h10.

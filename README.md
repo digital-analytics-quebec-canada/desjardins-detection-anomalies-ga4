@@ -67,11 +67,9 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
 )
 ```
 
-Ces 4 requêtes peuvent faire peur si vous n'êtes pas habitué à BigQuery, mais nous allons prendre le temps de ler décortiquer.
+Ces 4 requêtes peuvent faire peur si vous n'êtes pas habitué à BigQuery, mais nous allons prendre le temps de les décortiquer.
 
 ![Exemple de préparation](./img/preparation-des-donnes.png "Exemple de préparation")
-
-
 
 ## **ts**
 

@@ -41,7 +41,7 @@ L'avantage de cette approche est que si vous désirez surveiller une nouvelle di
 
 ---
 
-# Voici des exemples de requêtes pour créer une table de ce genre à partir des données de GA4
+# Voici des exemples de requêtes afin de créer une telle table à partir des données de GA4
 
 Nous allons d'abord créer une table avec les valeurs (dimensions/values) que nous souhaitons surveiller.  
 

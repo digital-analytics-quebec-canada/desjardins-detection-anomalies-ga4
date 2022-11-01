@@ -62,7 +62,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
   UNION ALL
 
   # Requête pour surveiller le nombre event par jour et par plateforme pour certain event GA4.
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
+  SELECT
+    PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
     CONCAT(event_name, " - ", platform) AS dimension,
     COUNT(*) AS value
   FROM `PROJET.DATASET.events_*`
@@ -73,7 +74,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
   UNION ALL
 
   # Requête pour surveiller le nombre event par jour et par type appareil pour certain event GA4.
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
+  SELECT
+    PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
     CONCAT(event_name, " - ", device.category) AS dimension,
     COUNT(*) AS value
   FROM `PROJET.DATASET.events_*`
@@ -84,7 +86,8 @@ CREATE OR REPLACE TABLE `PROJET.DATASET.detection_anomalies_data` AS (
   UNION ALL
 
   # Requête pour surveiller le nombre unique de visiteur (user_pseudo_id).
-  SELECT PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
+  SELECT
+    PARSE_TIMESTAMP("%Y%m%d", event_date, "America/Montreal") AS ts,
     "unique_user" AS dimension,
     COUNT(DISTINCT user_pseudo_id) AS value
   FROM `PROJET.DATASET.events_*`

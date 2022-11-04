@@ -18,7 +18,7 @@ Je vais donc démontrer une méthode simple d'effectuer une détection d'anomali
 
 Voici les grandes lignes : 
 
-![Architecture](./img/detection-anomalies.drawio.png "Architecture")
+![Architecture](./img/detection-anomalies.png "Architecture")
 
 ---
 

@@ -6,7 +6,7 @@
 
 ---
 
-Il est possible d'utiliser [BigQuery ML et un modèle prédictif ARIMA+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-time-series) afin d'effectuer des prédictions sur des séries temporelles.
+Il est possible d'utiliser [BigQuery ML et un modèle prédictif ARIMA+](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-time-series) afin d'effectuer des prédictions sur des séries chronologique.
 
 Ensuite, en comparant cette prédiction avec les valeurs réelles, il est possible d'identifier des anomalies potentielles.
 
@@ -155,9 +155,9 @@ C'est tout.  Oui, oui je vous jure.  Le modèle est entraîner.  En fait LES mod
 
 # Comprendre cette requête BigQuery ML
 
-- **MODEL_TYPE = ARIMA_PLUS** - Indiquer que nous désirons créer un modèle ARIMA+.  Ce type de modèles est fait pour l'analyse des séries temporelles.  Avec BigQueryML il est possible de créer plusieurs [autres types de modèles](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-e2e-journey).
+- **MODEL_TYPE = ARIMA_PLUS** - Indiquer que nous désirons créer un modèle ARIMA+.  Ce type de modèles est fait pour l'analyse des séries chronologiques.  Avec BigQueryML il est possible de créer plusieurs [autres types de modèles](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-e2e-journey).
 - **AUTO_ARIMA = TRUE** - Mettre à TRUE car nous avons entraîner PLUSIEURS modèles.
-- **DATA_FREQUENCY = AUTO_FREQUENCEY** - Détecter la fréquence de notre série temporelle. (Est-ce des valeurs par heures/jour/mois?)
+- **DATA_FREQUENCY = AUTO_FREQUENCEY** - Détecter la fréquence de notre série chronologique. (Est-ce des valeurs par heures/jour/mois?)
 - **HOLIDAY_REGION = CA** - Indiquer de prendre en compte les jours fériés Canadien dans le modèle.
 - **time_series_timestamp_col = 'ts'** - Indiquer quel champ contient le timestamp.
 - **time_series_data_col = 'dimension'** - Indiquer quel champ contient la valeur que nous souhaitons prédire.
